@@ -98,3 +98,6 @@ cp $INSTALL_ROOT/etc/issue $INSTALL_ROOT/etc/issue.net
 
 NAME=$(grep CDLABEL $LIVE_ROOT/isolinux/isolinux.cfg |head -n1|sed -r 's/^.*CDLABEL\=([a-zA-Z0-9_\.-]+) .*$/\1/g')
 
+# Increase the overlay size to 8GB instead of the default 512MB
+sed -i 's/^  append initrd.*/& rd.live.overlay.size=8192/' $LIVE_ROOT/isolinux/isolinux.cfg
+
